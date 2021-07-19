@@ -27,7 +27,7 @@
             }
 ?>
 
-    <header>
+    <header style="margin-bottom: 50px; margin-top: 10px;">
         <div style="display:inline;">
             <a href="?path=projects">Projects</a>
             <a href="?path=employees">Employees</a>
@@ -61,16 +61,30 @@ if (!isset($_GET['path']) or (isset($_GET['path']) and $_GET['path'] == 'project
             print("<tr>
                 <td>{$row["$table" . "_id"]}</td>
                 <td>{$row["$table" . "_name"]}</td>
-                <td>{$row["names"]}</td>
-                <td>");
+                <td>{$row["names"]}</td>");
+    ?>
+                <td>
+                    <button><a href="update.php?id=<?=${['id']}?>" class="update">Update</a></button>
+                    <button><a href="delete.php?id=<?=${['id']}?>" class="delete" action="delete.php method="post">Delete</a></button>
+                </td>
+                </tr>
+  <?php
             }
         } else {
             echo "0 results";
+          
         }
         print('</table>');
 
         mysqli_close($conn);
 ?>    
+
+<form>
+    <a href="create.php" class="create">Add project</a>
+</form>
+
+
+
 
 </body>
 </html> 
